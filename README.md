@@ -1,5 +1,5 @@
 TheZeldaMod
 ===========
 Hello !
-This my first Minecraft mod, The Zelda Mod.
+This is my first Minecraft mod, The Zelda Mod.
 Enjoy !
