@@ -1,0 +1,16 @@
+[
+{
+  "modid": "thezeldamod",
+  "name": "The Zelda Mod",
+  "description": "I'm too lazy do to it :P",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Linky"],
+  "credits": "Thanks to the Forge, FML and MFF guys :D",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
