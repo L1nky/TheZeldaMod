@@ -16,7 +16,7 @@ public class TileEntitySpeSand extends TileEntity
     public void writeToNBT(NBTTagCompound compound)
     {
         super.writeToNBT(compound);
-        compound.setInteger("H", this.h);
+        compound.setByte("H", this.h);
     }
 
     public byte getH()
