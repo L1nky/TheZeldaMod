@@ -1,6 +1,8 @@
 package linky.mods.thezeldamod.common;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import linky.mods.thezeldamod.proxy.CommonProxy;
 import cpw.mods.fml.common.Mod;
@@ -12,13 +14,15 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
 
-@Mod(modid = TheZeldaMod.modID, name = "The Zelda Mod", version = "1.0.0")
+@Mod(modid = "thezeldamod", name = "The Zelda Mod", version = "1.0.0")
 public class TheZeldaMod
 {
     @Instance(TheZeldaMod.modID)
     public static TheZeldaMod instance;
 
     public static final String modID = "thezeldamod";
+    
+    public static CreativeTabs TheZeldaModCreativeTab = new TheZeldaModCreativeTab("TheZeldaModCreativeTab");
     
     public static Item itemSandStaff;
     public static Item itemSandStaffCore;
@@ -40,8 +44,6 @@ public class TheZeldaMod
         GameRegistry.registerItem(itemSandStaffCore, "sand_staff_core");
         
         GameRegistry.registerBlock(blockSpeSand, ItemBlockSpeSand.class, "spe_sand");
-        
-        GameRegistry.registerTileEntity(TileEntitySpeSand.class, TheZeldaMod.modID);
     }
     
     @EventHandler

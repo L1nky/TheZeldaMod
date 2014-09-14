@@ -9,6 +9,6 @@ public class ItemSandStaffCore extends Item
     {
         this.setUnlocalizedName("sandStaffCore");
         this.setTextureName(TheZeldaMod.modID + ":sandstaffcore");
-        this.setCreativeTab(CreativeTabs.tabMaterials);
+        this.setCreativeTab(TheZeldaMod.TheZeldaModCreativeTab);
     }
 }

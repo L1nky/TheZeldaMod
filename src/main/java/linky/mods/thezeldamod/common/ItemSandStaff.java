@@ -18,84 +18,81 @@ public class ItemSandStaff extends Item
         this.setUnlocalizedName("sandStaff");
         this.setTextureName(TheZeldaMod.modID + ":sandstaff");
         this.setMaxStackSize(1);
-        this.setCreativeTab(CreativeTabs.tabTools);
+        this.setCreativeTab(TheZeldaMod.TheZeldaModCreativeTab);
     }
 
     public boolean onItemUse(ItemStack item, EntityPlayer player, World world, int x, int y, int z, int side, float p_77648_8_, float p_77648_9_, float p_77648_10_)
     {
         int metadata = world.getBlockMetadata(x, y, z);
-        if(world.getBlock(x, y, z) == Blocks.sand)
+        if(world.getBlock(x, y, z) == Blocks.sand && metadata < 2)
         {
-            for(int i = 1; i < 3; i++)
+            if(world.getBlock(x, y + 1, z) == Blocks.air)
             {
-                if(world.getBlock(x, y + i, z) == Blocks.air)
+                world.setBlock(x, y, z, TheZeldaMod.blockSpeSand, metadata * 3, 3);
+                if(world.getBlock(x, y + 2, z) == Blocks.air && !player.isSneaking())
                 {
-                    if(i == 1)
-                    {
-                        world.setBlock(x, y, z, TheZeldaMod.blockSpeSand, metadata, 3);
-                        TileEntity tile = world.getTileEntity(x, y, z);
-                        if(tile instanceof TileEntitySpeSand)
-                        {
-                            TileEntitySpeSand tileSpeSand = (TileEntitySpeSand)tile;
-                            tileSpeSand.setH((byte)0);
-                        }
-                    }
-                    world.setBlock(x, y + i, z, TheZeldaMod.blockSpeSand, metadata, 3);
-                    TileEntity tile = world.getTileEntity(x, y + i, z);
-                    if(tile instanceof TileEntitySpeSand)
-                    {
-                        TileEntitySpeSand tileSpeSand = (TileEntitySpeSand)tile;
-                        tileSpeSand.setH((byte)i);
-                    }
+                    world.setBlock(x, y + 1, z, TheZeldaMod.blockSpeSand, metadata * 3 + 1, 3);
+                    world.setBlock(x, y + 2, z, TheZeldaMod.blockSpeSand, metadata * 3 + 2, 3);
                 }
                 else
                 {
-                    return false;
+                    world.setBlock(x, y + 1, z, TheZeldaMod.blockSpeSand, metadata * 3 + 2, 3);
                 }
             }
-        }
-        else if(world.getBlock(x, y, z) == TheZeldaMod.blockSpeSand)
-        {
-            TileEntity tile = world.getTileEntity(x, y, z);
-            if(tile instanceof TileEntitySpeSand)
+            else
             {
-                TileEntitySpeSand tileSpeSand = (TileEntitySpeSand)tile;
-                byte h = tileSpeSand.getH();
-                if(h == 0)
+                return false;
+            }
+        }
+        else if(world.getBlock(x, y, z) == TheZeldaMod.blockSpeSand && metadata < 6)
+        {
+            if(metadata % 3 == 0)
+            {
+                world.setBlock(x, y, z, Blocks.sand, metadata / 3, 3);
+                if(world.getBlock(x, y + 1, z) == TheZeldaMod.blockSpeSand && world.getBlockMetadata(x, y + 1, z) == metadata + 1)
                 {
-                    world.setBlock(x, y, z, Blocks.sand, metadata, 3);
-                    for(int i = 1; i < 3; i++)
+                    world.setBlock(x, y + 1, z, Blocks.air);
+                    if(world.getBlock(x, y + 2, z) == TheZeldaMod.blockSpeSand && world.getBlockMetadata(x, y + 2, z) == metadata + 2)
                     {
-                        if(world.getBlock(x, y + i, z) == TheZeldaMod.blockSpeSand)
-                        {
-                            world.setBlock(x, y + i, z, Blocks.air);
-                        }
+                        world.setBlock(x, y + 2, z, Blocks.air);
                     }
                 }
-                else if(h == 1)
+                else if(world.getBlock(x, y + 1, z) == TheZeldaMod.blockSpeSand && world.getBlockMetadata(x, y + 1, z) == metadata + 2)
                 {
-                    world.setBlock(x, y, z, Blocks.air);
-                    if(world.getBlock(x, y + 1, z) == TheZeldaMod.blockSpeSand)
+                    world.setBlock(x, y + 1, z, Blocks.air);
+                }
+            }
+            else if(metadata % 3 == 1)
+            {
+                world.setBlock(x, y, z, Blocks.air);
+                if(world.getBlock(x, y + 1, z) == TheZeldaMod.blockSpeSand && world.getBlockMetadata(x, y + 1, z) == metadata + 1)
+                {
+                    world.setBlock(x, y + 1, z, Blocks.air);
+                }
+                if(world.getBlock(x, y - 1, z) == TheZeldaMod.blockSpeSand && world.getBlockMetadata(x, y - 1, z) == metadata - 1)
+                {
+                    world.setBlock(x, y - 1, z, Blocks.sand, (metadata - 1) / 3, 3);
+                }
+            }
+            else if(metadata % 3 == 2)
+            {
+                world.setBlock(x, y, z, Blocks.air);
+                if(world.getBlock(x, y - 1, z) == TheZeldaMod.blockSpeSand && world.getBlockMetadata(x, y - 1, z) == metadata - 1)
+                {
+                    world.setBlock(x, y - 1, z, Blocks.air);
+                    if(world.getBlock(x, y - 2, z) == TheZeldaMod.blockSpeSand && world.getBlockMetadata(x, y - 2, z) == metadata - 2)
                     {
-                        world.setBlock(x, y + 1, z, Blocks.air);
-                    }
-                    if(world.getBlock(x, y - 1, z) == TheZeldaMod.blockSpeSand)
-                    {
-                        world.setBlock(x, y - 1, z, Blocks.sand, metadata, 3);
+                        world.setBlock(x, y - 2, z, Blocks.sand, (metadata - 2) / 3, 3);
                     }
                 }
-                else if(h==2)
+                else if(world.getBlock(x, y - 1, z) == TheZeldaMod.blockSpeSand && world.getBlockMetadata(x, y - 1, z) == metadata - 2)
                 {
-                    world.setBlock(x, y, z, Blocks.air);
-                    if(world.getBlock(x, y - 1, z) == TheZeldaMod.blockSpeSand)
-                    {
-                        world.setBlock(x, y - 1, z, Blocks.air);
-                    }
-                    if(world.getBlock(x, y - 2, z) == TheZeldaMod.blockSpeSand)
-                    {
-                        world.setBlock(x, y - 2, z, Blocks.sand, metadata, 3);
-                    }
+                    world.setBlock(x, y - 1, z, Blocks.sand, (metadata - 2) / 3, 3);
                 }
+            }
+            else
+            {
+                return false;
             }
         }
         else
