@@ -8,6 +8,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSand;
+import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
@@ -30,8 +31,11 @@ public class BlockSpeSand extends BlockSand
     protected BlockSpeSand()
     {
         super();
+        this.setStepSound(soundTypeSand);
+        this.setHardness(0.5F);
         this.setBlockName("speSand");
         this.setCreativeTab(TheZeldaMod.TheZeldaModCreativeTab);
+        
     }
 
     @SideOnly(Side.CLIENT)
@@ -101,7 +105,7 @@ public class BlockSpeSand extends BlockSand
                 }
                 else if(world.getBlockMetadata(x, y - 1, z) - metadata == -2)
                 {
-                    world.setBlock(x, y - 1, z, Blocks.sand);
+                    world.setBlock(x, y - 1, z, Blocks.sand, (metadata - 2) / 3, 3);
                 }
             }
         }
@@ -115,7 +119,7 @@ public class BlockSpeSand extends BlockSand
                 }
                 else if(world.getBlockMetadata(x, y + 1, z) - metadata == 2)
                 {
-                    world.setBlock(x, y + 1, z, Blocks.sand);
+                    world.setBlock(x, y + 1, z, Blocks.sand, metadata / 3, 3);
                 }
             }
         }
