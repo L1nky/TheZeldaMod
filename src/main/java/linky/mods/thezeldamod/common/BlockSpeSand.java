@@ -22,6 +22,8 @@ public class BlockSpeSand extends BlockSand
     public static String[] subBlock = new String[] {"speSandBase", "speSandMiddle", "speSandTop", "speRedSandBase", "speRedSandMiddle", "speRedSandTop"};
     @SideOnly(Side.CLIENT)
     public IIcon[] iconArray = new IIcon[subBlock.length];
+    @SideOnly(Side.CLIENT)
+    public IIcon speSand, speRedSand;
 
     protected BlockSpeSand()
     {
@@ -38,6 +40,8 @@ public class BlockSpeSand extends BlockSand
         {
             this.iconArray[i] = iconRegister.registerIcon(TheZeldaMod.modID + ":" + subBlock[i]);
         }
+        speSand = iconRegister.registerIcon(TheZeldaMod.modID + ":speSand");
+        speRedSand = iconRegister.registerIcon(TheZeldaMod.modID + ":speRedSand");
     }
 
     @SideOnly(Side.CLIENT)
@@ -47,6 +51,28 @@ public class BlockSpeSand extends BlockSand
         if(metadata < 0 || metadata >= BlockSpeSand.subBlock.length)
         {
             return this.iconArray[0];
+        }
+        if(side == 1)
+        {
+            if(metadata == 2)
+            {
+                return this.speSand;
+            }
+            else if(metadata == 5)
+            {
+                return this.speRedSand;
+            }
+        }
+        else if(side == 0)
+        {
+            if(metadata == 0)
+            {
+                return this.speSand;
+            }
+            else if(metadata == 3)
+            {
+                return this.speRedSand;
+            }
         }
         return this.iconArray[metadata];
 
