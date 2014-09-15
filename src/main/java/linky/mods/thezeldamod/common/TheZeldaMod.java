@@ -3,7 +3,10 @@ package linky.mods.thezeldamod.common;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import linky.mods.thezeldamod.proxy.CommonProxy;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -49,7 +52,8 @@ public class TheZeldaMod
     @EventHandler
     public void init(FMLInitializationEvent event)
     {
-
+        GameRegistry.addRecipe(new ItemStack(itemSandStaffCore), new Object[]{" X ", "XYX", " X ", 'X', Blocks.sandstone, 'Y', Items.ender_pearl});
+        GameRegistry.addRecipe(new ItemStack(itemSandStaff), new Object[]{"  X",  " Y ", "Y  ", 'X', itemSandStaffCore, 'Y', Items.stick});
     }
     
     @EventHandler
