@@ -15,6 +15,7 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 @Mod(modid = "thezeldamod", name = "The Zelda Mod", version = "1.0.0")
@@ -29,6 +30,7 @@ public class TheZeldaMod
     
     public static Item itemSandStaff;
     public static Item itemSandStaffCore;
+    public static Item itemBomb;
     
     public static Block blockSpeSand;
     
@@ -40,13 +42,19 @@ public class TheZeldaMod
     {
         itemSandStaff = new ItemSandStaff();
         itemSandStaffCore = new ItemSandStaffCore();
+        itemBomb = new ItemBomb();
         
         blockSpeSand = new BlockSpeSand();
         
         GameRegistry.registerItem(itemSandStaff, "sand_staff");
         GameRegistry.registerItem(itemSandStaffCore, "sand_staff_core");
+        GameRegistry.registerItem(itemBomb, "bomb");
         
         GameRegistry.registerBlock(blockSpeSand, ItemBlockSpeSand.class, "spe_sand");
+        
+        EntityRegistry.registerModEntity(EntityBomb.class, "Throwing Rock", 1, this, 64, 10, true);
+        
+        proxy.registerRenderers();
     }
     
     @EventHandler
