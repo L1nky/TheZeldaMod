@@ -45,6 +45,7 @@ public class EntityBomb extends EntityThrowable
 
         if (!this.worldObj.isRemote)
         {
+            this.worldObj.newExplosion(this, this.posX, this.posY, this.posZ, 3, true, true);
             this.setDead();
         }
     }
