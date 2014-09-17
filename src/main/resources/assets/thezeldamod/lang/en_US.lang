@@ -1,6 +1,7 @@
 #Items
 item.sandStaff.name=Sand Staff
 item.sandStaffCore.name=Sand Staff
+item.bomb.name=Bomb
 
 #Blocks
 tile.speSand.speSandBase.name=Special Sand Base
@@ -9,6 +10,7 @@ tile.speSand.speSandTop.name=Special Sand Top
 tile.speSand.speRedSandBase.name=Special Red Sand Base
 tile.speSand.speRedSandMiddle.name=Special Red Sand Middle
 tile.speSand.speRedSandTop.name=Special Red Sand Top
+tile.bombBush.name=Bomb Bush
 
 #Creative Tabs
 itemGroup.TheZeldaModCreativeTab=The Zelda Mod

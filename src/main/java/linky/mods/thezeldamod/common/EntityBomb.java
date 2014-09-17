@@ -11,20 +11,28 @@ import net.minecraft.world.World;
 public class EntityBomb extends EntityThrowable
 {
     private static final String __OBFID = "CL_00001722";
+    private boolean impacted;
+    private long tick;
 
     public EntityBomb(World world)
     {
         super(world);
+        this.impacted = false;
+        this.tick = 0;
     }
 
     public EntityBomb(World world, EntityLivingBase entityLivingBase)
     {
         super(world, entityLivingBase);
+        this.impacted = false;
+        this.tick = 0;
     }
 
     public EntityBomb(World world, double double1, double double2, double double3)
     {
         super(world, double1, double2, double3);
+        this.impacted = false;
+        this.tick = 0;
     }
 
     /**
@@ -33,17 +41,31 @@ public class EntityBomb extends EntityThrowable
     @Override
     protected void onImpact(MovingObjectPosition movingObjectPosition)
     {
-        if (movingObjectPosition.entityHit != null)
+        if(!impacted)
         {
-            float bombDamage = 2;
-            movingObjectPosition.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, this.getThrower()), bombDamage);
+            if(movingObjectPosition.entityHit != null)
+            {
+                float bombDamage = 2;
+                movingObjectPosition.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, this.getThrower()), bombDamage);
+            }
+            for(int i = 0; i < 8; ++i)
+            {
+                this.worldObj.spawnParticle("crit", this.posX, this.posY, this.posZ, 0.0D, 0.0D, 0.0D);
+            }
         }
-        for (int i = 0; i < 8; ++i)
-        {
-            this.worldObj.spawnParticle("crit", this.posX, this.posY, this.posZ, 0.0D, 0.0D, 0.0D);
-        }
+        this.impacted = true;
+    }
 
-        if (!this.worldObj.isRemote)
+    @Override
+    public void onUpdate()
+    {
+        if(!impacted)
+            super.onUpdate();
+        else
+        {
+            tick++;
+        }
+        if(tick > 40 && !this.worldObj.isRemote)
         {
             this.worldObj.newExplosion(this, this.posX, this.posY, this.posZ, 3, true, true);
             this.setDead();

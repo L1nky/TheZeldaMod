@@ -33,6 +33,7 @@ public class TheZeldaMod
     public static Item itemBomb;
     
     public static Block blockSpeSand;
+    public static Block blockBombBush;
     
     @SidedProxy(clientSide = "linky.mods.thezeldamod.proxy.ClientProxy", serverSide = "linky.mods.thezeldamod.proxy.CommonProxy")
     public static CommonProxy proxy;
@@ -45,12 +46,14 @@ public class TheZeldaMod
         itemBomb = new ItemBomb();
         
         blockSpeSand = new BlockSpeSand();
+        blockBombBush = new BlockBombBush();
         
         GameRegistry.registerItem(itemSandStaff, "sand_staff");
         GameRegistry.registerItem(itemSandStaffCore, "sand_staff_core");
         GameRegistry.registerItem(itemBomb, "bomb");
         
         GameRegistry.registerBlock(blockSpeSand, ItemBlockSpeSand.class, "spe_sand");
+        GameRegistry.registerBlock(blockBombBush, "bomb_bush");
         
         EntityRegistry.registerModEntity(EntityBomb.class, "Throwing Rock", 1, this, 64, 10, true);
         
