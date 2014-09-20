@@ -20,7 +20,7 @@ public class ItemSandStaff extends Item
         this.setCreativeTab(TheZeldaMod.TheZeldaModCreativeTab);
     }
 
-    public boolean onItemUse(ItemStack item, EntityPlayer player, World world, int x, int y, int z, int side, float p_77648_8_, float p_77648_9_, float p_77648_10_)
+    public boolean onItemUse(ItemStack item, EntityPlayer player, World world, int x, int y, int z, int side, float preciseX, float preciseY, float preciseZ)
     {
         int metadata = world.getBlockMetadata(x, y, z);
         if(world.getBlock(x, y, z) == Blocks.sand && metadata < 2)

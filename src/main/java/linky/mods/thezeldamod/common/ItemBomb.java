@@ -22,11 +22,7 @@ public class ItemBomb extends Item
         {
             --itemstack.stackSize;
         }
-
         world.playSoundAtEntity(player, "random.bow", 0.5F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
-
-        // IMPORTANT! Only spawn new entities on the server. If the world is not remote,
-        // that means you are on the server:
         if (!world.isRemote)
         {
             world.spawnEntityInWorld(new EntityBomb(world, player));

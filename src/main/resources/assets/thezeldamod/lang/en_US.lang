@@ -10,7 +10,16 @@ tile.speSand.speSandTop.name=Special Sand Top
 tile.speSand.speRedSandBase.name=Special Red Sand Base
 tile.speSand.speRedSandMiddle.name=Special Red Sand Middle
 tile.speSand.speRedSandTop.name=Special Red Sand Top
-tile.bombBush.name=Bomb Bush
+tile.bombBush.bombbush0.name=Bomb Bush
+tile.bombBush.bombbush1.name=Bomb Bush
+tile.bombBush.bombbush2.name=Bomb Bush
+tile.bombBush.bombbush3.name=Bomb Bush
+tile.bombBush.bombbush4.name=Bomb Bush
+tile.bombBush.bombbush5.name=Bomb Bush
+tile.bombBush.bombbush6.name=Bomb Bush
+
+#Entities
+entity.
 
 #Creative Tabs
 itemGroup.TheZeldaModCreativeTab=The Zelda Mod

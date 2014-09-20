@@ -53,9 +53,9 @@ public class TheZeldaMod
         GameRegistry.registerItem(itemBomb, "bomb");
         
         GameRegistry.registerBlock(blockSpeSand, ItemBlockSpeSand.class, "spe_sand");
-        GameRegistry.registerBlock(blockBombBush, "bomb_bush");
+        GameRegistry.registerBlock(blockBombBush, ItemBlockBombBush.class, "bomb_bush");
         
-        EntityRegistry.registerModEntity(EntityBomb.class, "Throwing Rock", 1, this, 64, 10, true);
+        EntityRegistry.registerModEntity(EntityBomb.class, "Bomb", 1, this, 64, 10, true);
         
         proxy.registerRenderers();
     }

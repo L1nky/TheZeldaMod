@@ -35,9 +35,6 @@ public class EntityBomb extends EntityThrowable
         this.tick = 0;
     }
 
-    /**
-     * Called when this EntityThrowable hits a block or entity.
-     */
     @Override
     protected void onImpact(MovingObjectPosition movingObjectPosition)
     {
@@ -67,7 +64,7 @@ public class EntityBomb extends EntityThrowable
         }
         if(tick > 40 && !this.worldObj.isRemote)
         {
-            this.worldObj.newExplosion(this, this.posX, this.posY, this.posZ, 3, true, true);
+            this.worldObj.newExplosion(this, this.posX, this.posY, this.posZ, 3, false, true);
             this.setDead();
         }
     }
