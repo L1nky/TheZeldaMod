@@ -13,9 +13,12 @@ tile.speSand.speRedSandBase.name=Special Red Sand Base
 tile.speSand.speRedSandMiddle.name=Special Red Sand Middle
 tile.speSand.speRedSandTop.name=Special Red Sand Top
 tile.bombBush.name=Bomb Bush
-tile.ZeldaChest.name=Zelda Chest
+tile.zeldaChest.name=Zelda Chest
 
 #Entities
 
 #Creative Tabs
 itemGroup.TheZeldaModCreativeTab=The Zelda Mod
+
+#Containers
+container.ZeldaChest=Zelda Chest

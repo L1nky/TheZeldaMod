@@ -25,22 +25,22 @@ public class TheZeldaMod
     public static TheZeldaMod instance;
 
     public static final String modID = "thezeldamod";
-    
+
     public static CreativeTabs TheZeldaModCreativeTab = new TheZeldaModCreativeTab("TheZeldaModCreativeTab");
-    
+
     public static Item itemSandStaff;
     public static Item itemSandStaffCore;
     public static Item itemBomb;
     public static Item itemBombBushSeed;
     public static Item itemMasterSword;
-    
+
     public static Block blockSpeSand;
     public static Block blockBombBush;
     public static Block blockZeldaChest;
-    
+
     @SidedProxy(clientSide = "linky.mods.thezeldamod.proxy.ClientProxy", serverSide = "linky.mods.thezeldamod.proxy.CommonProxy")
     public static CommonProxy proxy;
-    
+
     @EventHandler
     public void preInit(FMLPreInitializationEvent event)
     {
@@ -49,11 +49,11 @@ public class TheZeldaMod
         itemBomb = new ItemBomb();
         itemBombBushSeed = new ItemBombBushSeed();
         itemMasterSword = new ItemMasterSword();
-        
+
         blockSpeSand = new BlockSpeSand();
         blockBombBush = new BlockBombBush();
-        blockZeldaChest = new BlockZeldaChest(Material.wood);
-        
+        blockZeldaChest = new BlockZeldaChest();
+
         GameRegistry.registerItem(itemSandStaff, "sand_staff");
         GameRegistry.registerItem(itemSandStaffCore, "sand_staff_core");
         GameRegistry.registerItem(itemBomb, "bomb");
@@ -62,25 +62,26 @@ public class TheZeldaMod
 
         GameRegistry.registerBlock(blockBombBush, "bomb_bush");
         GameRegistry.registerBlock(blockZeldaChest, "zelda_chest");
-        
 
         GameRegistry.registerBlock(blockSpeSand, ItemBlockSpeSand.class, "spe_sand");
-        
+
+        GameRegistry.registerTileEntity(TileEntityZeldaChest.class, this.modID + ":zeldaChest");
+
         EntityRegistry.registerModEntity(EntityBomb.class, "Bomb", 1, this, 64, 10, true);
-        
+
         proxy.registerRenderers();
     }
-    
+
     @EventHandler
     public void init(FMLInitializationEvent event)
     {
-        GameRegistry.addRecipe(new ItemStack(itemSandStaffCore), new Object[]{" X ", "XYX", " X ", 'X', Blocks.sandstone, 'Y', Items.ender_pearl});
-        GameRegistry.addRecipe(new ItemStack(itemSandStaff), new Object[]{"  X",  " Y ", "Y  ", 'X', itemSandStaffCore, 'Y', Items.stick});
+        GameRegistry.addRecipe(new ItemStack(itemSandStaffCore), new Object[] {" X ", "XYX", " X ", 'X', Blocks.sandstone, 'Y', Items.ender_pearl});
+        GameRegistry.addRecipe(new ItemStack(itemSandStaff), new Object[] {"  X", " Y ", "Y  ", 'X', itemSandStaffCore, 'Y', Items.stick});
     }
-    
+
     @EventHandler
     public void postInit(FMLPostInitializationEvent event)
     {
 
-    }   
+    }
 }
