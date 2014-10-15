@@ -31,9 +31,12 @@ public class TheZeldaMod
     public static Item itemSandStaff;
     public static Item itemSandStaffCore;
     public static Item itemBomb;
+    public static Item itemBombBushSeed;
+    public static Item itemMasterSword;
     
     public static Block blockSpeSand;
     public static Block blockBombBush;
+    public static Block blockZeldaChest;
     
     @SidedProxy(clientSide = "linky.mods.thezeldamod.proxy.ClientProxy", serverSide = "linky.mods.thezeldamod.proxy.CommonProxy")
     public static CommonProxy proxy;
@@ -44,16 +47,24 @@ public class TheZeldaMod
         itemSandStaff = new ItemSandStaff();
         itemSandStaffCore = new ItemSandStaffCore();
         itemBomb = new ItemBomb();
+        itemBombBushSeed = new ItemBombBushSeed();
+        itemMasterSword = new ItemMasterSword();
         
         blockSpeSand = new BlockSpeSand();
         blockBombBush = new BlockBombBush();
+        blockZeldaChest = new BlockZeldaChest(Material.wood);
         
         GameRegistry.registerItem(itemSandStaff, "sand_staff");
         GameRegistry.registerItem(itemSandStaffCore, "sand_staff_core");
         GameRegistry.registerItem(itemBomb, "bomb");
+        GameRegistry.registerItem(itemBombBushSeed, "bomb_bush_seed");
+        GameRegistry.registerItem(itemMasterSword, "master_sword");
+
+        GameRegistry.registerBlock(blockBombBush, "bomb_bush");
+        GameRegistry.registerBlock(blockZeldaChest, "zelda_chest");
         
+
         GameRegistry.registerBlock(blockSpeSand, ItemBlockSpeSand.class, "spe_sand");
-        GameRegistry.registerBlock(blockBombBush, ItemBlockBombBush.class, "bomb_bush");
         
         EntityRegistry.registerModEntity(EntityBomb.class, "Bomb", 1, this, 64, 10, true);
         

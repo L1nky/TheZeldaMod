@@ -31,7 +31,7 @@ public class BlockSpeSand extends BlockSand
         this.setStepSound(soundTypeSand);
         this.setHardness(0.5F);
         this.setBlockName("speSand");
-        this.setCreativeTab(TheZeldaMod.TheZeldaModCreativeTab);
+        this.setCreativeTab(null);
         
     }
 

@@ -15,7 +15,7 @@ public class TheZeldaModCreativeTab extends CreativeTabs
     @Override
     public ItemStack getIconItemStack()
     {
-        return new ItemStack(TheZeldaMod.itemSandStaff);
+        return new ItemStack(TheZeldaMod.itemBomb);
     }
 
     @Override

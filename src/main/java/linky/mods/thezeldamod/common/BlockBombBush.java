@@ -28,15 +28,14 @@ public class BlockBombBush extends BlockBush
     {
         super(Material.plants);
         this.setBlockName("bombBush");
-        this.setCreativeTab(TheZeldaMod.TheZeldaModCreativeTab);
-        float f = 0.45F;
-        this.setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, f * 1.6F, 0.5F + f);
+        this.setCreativeTab(null);
+        this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.25F, 1.0F);
     }
 
     @Override
     public Item getItemDropped(int p_149650_1_, Random random, int p_149650_3_)
     {
-        return null;
+        return TheZeldaMod.itemBombBushSeed;
     }
 
     @Override
@@ -44,10 +43,11 @@ public class BlockBombBush extends BlockBush
     {
         if(world.getBlockMetadata(x, y, z) == 6)
         {
-            world.setBlock(x, y, z, TheZeldaMod.blockBombBush, 3, 3);
-            if(!player.inventory.addItemStackToInventory(new ItemStack(TheZeldaMod.itemBomb)))
+            world.setBlockMetadataWithNotify(x, y, z, 3, 3);
+            if(!world.isRemote)
             {
-                world.spawnEntityInWorld(new EntityItem(world, x, y, z, new ItemStack(TheZeldaMod.itemBomb)));
+                EntityItem entityItem = new EntityItem(world, x, y + 0.5, z, new ItemStack(TheZeldaMod.itemBomb));
+                world.spawnEntityInWorld(entityItem);
             }
             return true;
         }
@@ -57,16 +57,19 @@ public class BlockBombBush extends BlockBush
     @Override
     public void onBlockDestroyedByPlayer(World world, int x, int y, int z, int metadata)
     {
-        if(3 < metadata && metadata < 7)
+        if(!world.isRemote && 3 < metadata && metadata < 7)
         {
-            world.newExplosion(new EntityBomb(world), (double)x, (double)y, (double)z, metadata - 3, false, true);
+            world.newExplosion(new EntityBomb(world), x, y, z, metadata - 3, false, true);
         }
     }
 
     @Override
     public void onBlockDestroyedByExplosion(World world, int x, int y, int z, Explosion explosion)
     {
-        world.newExplosion(new EntityBomb(world), (double)x, (double)y, (double)z, 2, false, true);
+        if(!world.isRemote)
+        {
+            world.newExplosion(new EntityBomb(world), x, y, z, 2, false, true);
+        }
     }
 
     public void updateTick(World world, int x, int y, int z, Random random)
@@ -102,11 +105,8 @@ public class BlockBombBush extends BlockBush
     }
 
     @Override
-    public void getSubBlocks(Item item, CreativeTabs tabs, List list)
+    public int getRenderType()
     {
-        for(int i = 0; i < subBlock.length; i++)
-        {
-            list.add(new ItemStack(item, 1, i));
-        }
+        return 1;
     }
 }

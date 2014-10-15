@@ -147,7 +147,7 @@ public class ItemSandStaff extends Item
         {
             return false;
         }
-        player.playSound("soundTypeSand", 1, 0);
+        world.playSoundAtEntity(player, "dig.sand", 0.5F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
         return true;
     }
 }
