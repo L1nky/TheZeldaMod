@@ -37,6 +37,7 @@ public class TheZeldaMod
     public static Block blockSpeSand;
     public static Block blockBombBush;
     public static Block blockZeldaChest;
+    public static Block blockZeldaGlass;
 
     @SidedProxy(clientSide = "linky.mods.thezeldamod.proxy.ClientProxy", serverSide = "linky.mods.thezeldamod.proxy.CommonProxy")
     public static CommonProxy proxy;
@@ -53,6 +54,7 @@ public class TheZeldaMod
         blockSpeSand = new BlockSpeSand();
         blockBombBush = new BlockBombBush();
         blockZeldaChest = new BlockZeldaChest();
+        blockZeldaGlass = new BlockZeldaGlass();
 
         GameRegistry.registerItem(itemSandStaff, "sand_staff");
         GameRegistry.registerItem(itemSandStaffCore, "sand_staff_core");
@@ -62,6 +64,7 @@ public class TheZeldaMod
 
         GameRegistry.registerBlock(blockBombBush, "bomb_bush");
         GameRegistry.registerBlock(blockZeldaChest, "zelda_chest");
+        GameRegistry.registerBlock(blockZeldaGlass, "zelda_glass");
 
         GameRegistry.registerBlock(blockSpeSand, ItemBlockSpeSand.class, "spe_sand");
 

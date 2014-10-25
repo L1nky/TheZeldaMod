@@ -64,11 +64,13 @@ public class BlockBombBush extends BlockBush
     }
 
     @Override
-    public void onBlockDestroyedByExplosion(World world, int x, int y, int z, Explosion explosion)
+    public void onBlockExploded(World world, int x, int y, int z, Explosion explosion)
     {
-        if(!world.isRemote)
+        int metadata = world.getBlockMetadata(x, y, z);
+        world.setBlockToAir(x, y, z);
+        if(!world.isRemote && 3 < metadata && metadata < 7)
         {
-            world.newExplosion(new EntityBomb(world), x, y, z, 2, false, true);
+            world.newExplosion(new EntityBomb(world), x, y, z, metadata - 3, false, true);
         }
     }
 
