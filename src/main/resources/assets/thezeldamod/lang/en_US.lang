@@ -14,6 +14,9 @@ tile.speSand.speRedSandMiddle.name=Special Red Sand Middle
 tile.speSand.speRedSandTop.name=Special Red Sand Top
 tile.bombBush.name=Bomb Bush
 tile.zeldaChest.name=Zelda Chest
+tile.zeldaGlass.name=Zelda Glass
+tile.clock.name=Clock
+tile.selen.name=Selen Block
 
 #Entities
 

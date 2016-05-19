@@ -10,6 +10,7 @@ import net.minecraft.block.BlockSand;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.Entity;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -32,7 +33,7 @@ public class BlockSpeSand extends BlockSand
         this.setHardness(0.5F);
         this.setBlockName("speSand");
         this.setCreativeTab(null);
-        
+
     }
 
     @SideOnly(Side.CLIENT)
@@ -79,9 +80,11 @@ public class BlockSpeSand extends BlockSand
         }
     }
 
-    /*
-     * @Override public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity) { entity.moveEntity(0, 1, 0); entity.setVelocity(0, 0, 0); }*
-     */
+    @Override
+    public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity)
+    {
+        entity.setPosition(entity.posX, entity.posY + 1, entity.posZ);
+    }
 
     @Override
     public int quantityDropped(Random p_149745_1_)

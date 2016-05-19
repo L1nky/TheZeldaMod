@@ -7,9 +7,9 @@ import net.minecraft.item.ItemStack;
 public class TheZeldaModCreativeTab extends CreativeTabs
 {
 
-    public TheZeldaModCreativeTab(String lable)
+    public TheZeldaModCreativeTab(String label)
     {
-        super(lable);
+        super(label);
     }
 
     @Override

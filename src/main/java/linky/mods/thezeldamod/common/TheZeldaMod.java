@@ -38,6 +38,9 @@ public class TheZeldaMod
     public static Block blockBombBush;
     public static Block blockZeldaChest;
     public static Block blockZeldaGlass;
+    public static Block blockSelen;
+    public static Block blockClock;
+    public static Block blockZeldaSuperChest;
 
     @SidedProxy(clientSide = "linky.mods.thezeldamod.proxy.ClientProxy", serverSide = "linky.mods.thezeldamod.proxy.CommonProxy")
     public static CommonProxy proxy;
@@ -55,6 +58,10 @@ public class TheZeldaMod
         blockBombBush = new BlockBombBush();
         blockZeldaChest = new BlockZeldaChest();
         blockZeldaGlass = new BlockZeldaGlass();
+        blockSelen = new BlockSelen();
+        blockClock = new BlockClock();
+        blockZeldaSuperChest = new BlockZeldaSuperChest();
+
 
         GameRegistry.registerItem(itemSandStaff, "sand_staff");
         GameRegistry.registerItem(itemSandStaffCore, "sand_staff_core");
@@ -65,10 +72,15 @@ public class TheZeldaMod
         GameRegistry.registerBlock(blockBombBush, "bomb_bush");
         GameRegistry.registerBlock(blockZeldaChest, "zelda_chest");
         GameRegistry.registerBlock(blockZeldaGlass, "zelda_glass");
+        GameRegistry.registerBlock(blockSelen, "selen");
+        GameRegistry.registerBlock(blockClock, "clock");
+        GameRegistry.registerBlock(blockZeldaSuperChest, "zelda_super_chest");
 
         GameRegistry.registerBlock(blockSpeSand, ItemBlockSpeSand.class, "spe_sand");
 
         GameRegistry.registerTileEntity(TileEntityZeldaChest.class, this.modID + ":zeldaChest");
+        GameRegistry.registerTileEntity(TileEntityClock.class, this.modID + ":clock");
+        GameRegistry.registerTileEntity(TileEntityZeldaSuperChest.class, this.modID + ":zeldaSuperChest");
 
         EntityRegistry.registerModEntity(EntityBomb.class, "Bomb", 1, this, 64, 10, true);
 
